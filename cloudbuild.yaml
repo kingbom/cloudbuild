@@ -1,6 +1,10 @@
 steps:
   - name: maven:3-jdk-8
     entrypoint: mvn
-    args: ['install', 'test', 'package']
+    args: ['test']
+  - name: maven:3-jdk-8
+    entrypoint: mvn
+    args: ['package', '-Dmaven.test.skip=true']
   - name: gcr.io/cloud-builders/docker
-    args: ['build', '-t', 'gcr.io/crm-dev-288219/cloudbuild', '--build-arg=JAR_FILE=/workspace/target/cloudbuild-0.0.1-SNAPSHOT.jar', '.']
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/cloudbuild', '--build-arg=JAR_FILE=target/cloudbuild-0.0.1-SNAPSHOT.jar', '.']
+images: ["gcr.io/$PROJECT_ID/cloudbuild"]
