@@ -3,4 +3,4 @@ steps:
     entrypoint: mvn
     args: ['install', 'test', 'package']
   - name: gcr.io/cloud-builders/docker
-    args: ['build', '-t', 'gcr.io/crm-dev-288219/cloudbuild', '--build-arg=JAR_FILE=target/cloudbuild-0.0.1-SNAPSHOT.jar', '.']
+    args: ['build', '-t', 'gcr.io/crm-dev-288219/cloudbuild', '--build-arg=JAR_FILE=/workspace/target/cloudbuild-0.0.1-SNAPSHOT.jar', '.']
