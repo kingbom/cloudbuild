@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  cloudbuild
+  namespace: default
+  labels:
+    app:  cloudbuild
+spec:
+  selector:
+    matchLabels:
+      app: cloudbuild
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app:  cloudbuild
+    spec:
+      containers:
+        - name:  cloudbuild
+          image:  bomnalak/cloudbuild:latest
+          ports:
+          - containerPort: 8080
