@@ -4,4 +4,12 @@ steps:
     args: ['clean', 'install']
   - name: gcr.io/cloud-builders/docker
     args: ['build', '-t', 'gcr.io/$PROJECT_ID/cloudbuild', '.']
-images: ["gcr.io/$PROJECT_ID/cloudbuild"]
+  - name: gcr.io/cloud-builders/docker
+    args: [ 'push', 'gcr.io/$PROJECT_ID/cloudbuild']
+  - name: gcr.io/cloud-builders/gke-deploy
+    args:
+      - run
+      - --filename=k8s-deployment
+      - --image=gcr.io/$PROJECT_ID/cloudbuild:latest
+      - --location=us-central1-c
+      - --cluster=cluster-dev

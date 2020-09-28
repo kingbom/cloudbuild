@@ -17,6 +17,6 @@ spec:
     spec:
       containers:
         - name:  cloudbuild
-          image:  bomnalak/cloudbuild:latest
+          image: gcr.io/$PROJECT_ID/cloudbuild:latest
           ports:
           - containerPort: 8080

@@ -6,9 +6,6 @@ RUN apt-get install -y libfontconfig
 # Set volume point to /tmp
 VOLUME /tmp
 
-# Make port 9080 and 5555 available to the world outside container
-EXPOSE 9080 5555
-
 # Set application's JAR file
 ARG JAR_FILE=cloudbuild-0.0.1-SNAPSHOT.jar
 
