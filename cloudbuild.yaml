@@ -10,6 +10,6 @@ steps:
     args:
       - run
       - --filename=k8s-deployment.yaml
-      - --image=gcr.io/$PROJECT_ID/cloudbuild:latest
+      - --image=gcr.io/crm-dev-288219/cloudbuild:latest
       - --location=us-central1-c
       - --cluster=cluster-dev
