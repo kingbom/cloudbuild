@@ -5,23 +5,15 @@ steps:
     args: ['clean', 'install']
   - name: gcr.io/cloud-builders/docker
     id: "Build"
-    args: ['build', '-t', 'gcr.io/$PROJECT_ID/cloudbuild', '.']
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/cloudbuild:$SHORT_SHA', '.']
   - name: gcr.io/cloud-builders/docker
     id: "Push"
-    args: ['push', 'gcr.io/$PROJECT_ID/cloudbuild']
+    args: ['push', 'gcr.io/$PROJECT_ID/cloudbuild:$SHORT_SHA']
   - name: gcr.io/cloud-builders/gke-deploy
     id: "Deploy"
     args:
       - run
       - --filename=k8s-deployment.yaml
-      - --image=gcr.io/crm-dev-288219/cloudbuild:latest
-      - --location=us-central1-c
-      - --cluster=cluster-dev
-  - name: gcr.io/cloud-builders/gke-deploy
-    id: "Service Deploy"
-    args:
-      - run
-      - --filename=k8s-service.yaml
-      - --image=gcr.io/crm-dev-288219/cloudbuild:latest
+      - --image=gcr.io/$PROJECT_ID/cloudbuild:$SHORT_SHA
       - --location=us-central1-c
       - --cluster=cluster-dev
