@@ -1,10 +1,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name:  cloudbuild
+  name: cloudbuild
   namespace: default
   labels:
-    app:  cloudbuild
+    app: cloudbuild
 spec:
   selector:
     matchLabels:
@@ -14,10 +14,10 @@ spec:
   template:
     metadata:
       labels:
-        app:  cloudbuild
+        app: cloudbuild
     spec:
       containers:
-        - name:  cloudbuild
+        - name: cloudbuild
           image: gcr.io/crm-dev-288219/cloudbuild:latest
           ports:
           - containerPort: 8080
