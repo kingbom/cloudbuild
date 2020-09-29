@@ -9,7 +9,6 @@ spec:
   selector:
     matchLabels:
       app: cloudbuild
-      version: latest
   replicas: 2
   template:
     metadata:
