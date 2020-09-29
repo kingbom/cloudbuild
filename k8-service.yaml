@@ -5,12 +5,10 @@ metadata:
   namespace: "default"
   labels:
     app: "cloudbuild"
-    app.kubernetes.io/managed-by: "gcp-cloud-build-deploy"
 spec:
   ports:
   - protocol: "TCP"
-    port: 80
+    port: 8080
   selector:
     app: "cloudbuild"
   type: "LoadBalancer"
-  loadBalancerIP: ""
