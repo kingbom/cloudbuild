@@ -18,10 +18,10 @@ steps:
       - --location=us-central1-c
       - --cluster=cluster-dev
   - name: gcr.io/cloud-builders/gke-deploy
-      id: "Service Deploy"
-      args:
-        - run
-        - --filename=k8s-service.yaml
-        - --image=gcr.io/crm-dev-288219/cloudbuild:latest
-        - --location=us-central1-c
-        - --cluster=cluster-dev
+    id: "Service Deploy"
+    args:
+      - run
+      - --filename=k8s-service.yaml
+      - --image=gcr.io/crm-dev-288219/cloudbuild:latest
+      - --location=us-central1-c
+      - --cluster=cluster-dev
